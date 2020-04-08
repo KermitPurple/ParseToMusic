@@ -23,6 +23,7 @@ class PPlayer:
 		return wordList
 	
 	def play(self):
+		print("Playing " + self.file)
 		for note in self.list:
 			rest = False
 			if note[0] == 'r':
@@ -36,7 +37,6 @@ class PPlayer:
 					raise SyntaxError("Could not read octive of note")
 				time = round(self.getTime(note[2]))
 			if not rest:
-				print(note)
 				Beep(round(noteLetter[octive]), time)
 			else:
 				sleep(time/1000)
