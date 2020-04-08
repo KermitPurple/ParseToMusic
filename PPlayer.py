@@ -22,24 +22,25 @@ class PPlayer:
 				wordList += line.split(" ")
 		return wordList
 	
-	def play(self):
+	def play(self, loop=1):
 		print("Playing " + self.file)
-		for note in self.list:
-			rest = False
-			if note[0] == 'r':
-				rest = True
-				time = round(self.getTime(note[1]))
-			else:
-				noteLetter = self.getNote(note[0])
-				try:
-					octive = int(note[1])
-				except:
-					raise SyntaxError("Could not read octive of note")
-				time = round(self.getTime(note[2]))
-			if not rest:
-				Beep(round(noteLetter[octive]), time)
-			else:
-				sleep(time/1000)
+		for _ in range(0, loop):
+			for note in self.list:
+				rest = False
+				if note[0] == 'r':
+					rest = True
+					time = round(self.getTime(note[1]))
+				else:
+					noteLetter = self.getNote(note[0])
+					try:
+						octive = int(note[1])
+					except:
+						raise SyntaxError("Could not read octive of note")
+					time = round(self.getTime(note[2]))
+				if not rest:
+					Beep(round(noteLetter[octive]), time)
+				else:
+					sleep(time/1000)
 
 
 	def getNote(self, ch):
