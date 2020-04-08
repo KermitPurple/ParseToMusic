@@ -4,12 +4,19 @@ from frequencies import NotesDict
 
 class PPlayer:
 
-	mspb = 1500
+	mspb = 1000
 	whole = mspb * 4
 	half = mspb * 2
 	quarter = mspb
 	eighth = mspb / 2
 	sixteenth = mspb / 4
+	TimesDict = {
+			"w": whole,
+			"h": half,
+			"q": quarter,
+			"e": eighth,
+			"s": sixteenth,
+			}
 
 	def __init__(self, FileToParse):
 		self.file = FileToParse
@@ -29,7 +36,10 @@ class PPlayer:
 				rest = False
 				if note[0] == 'r':
 					rest = True
-					time = round(self.getTime(note[1]))
+					try:
+						time = round(self.TimesDict[note[1]])
+					except:
+						raise SyntaxError("Could not read time of note")
 				else:
 					try:
 						noteLetter = NotesDict[note[0]]
@@ -39,23 +49,12 @@ class PPlayer:
 						octive = int(note[1])
 					except:
 						raise SyntaxError("Could not read octive of note")
-					time = round(self.getTime(note[2]))
+					try:
+						time = round(self.TimesDict[note[2]])
+					except:
+						raise SyntaxError("Could not read time of note")
 				if not rest:
 					Beep(round(noteLetter[octive]), time)
 				else:
 					sleep(time/1000)
-
-
-	def getTime(self, ch):
-		if ch == 'w':
-			return self.whole
-		elif ch == 'h':
-			return self.half
-		elif ch == 'q':
-			return self.quarter
-		elif ch == 'e':
-			return self.eighth
-		elif ch == 's':
-			return self.sixteenth
-		raise SyntaxError("Could not read time of note")
 
