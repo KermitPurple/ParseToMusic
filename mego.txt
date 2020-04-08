@@ -1,4 +1,1 @@
-D3s D3s D4s rs A4e a4e G3e F3e D3s F3s G3s
-C3sC3sD4 A4.Ab4s Rs G3F3D3sF3sG3s
-B3sB3sD4 A4.Ab4s Rs G3F3D3sF3sG3s
-Bb3sBb3sD4 A4.Ab4s Rs G3F3D3sF3sG3s
+D4s D4s D5s rs A4e a4e G4e F4e D4s F4s G4s

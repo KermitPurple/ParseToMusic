@@ -1,3 +1,3 @@
 from PPlayer import PPlayer
 
-PPlayer("mego.txt")
+PPlayer("mego.txt").play()
