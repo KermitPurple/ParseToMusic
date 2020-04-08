@@ -1,10 +1,10 @@
 from winsound import Beep
 from time import sleep
-from frequencies import C, d, D, e, E, F, G, a, A, b, B
+from frequencies import NotesDict
 
 class PPlayer:
 
-	mspb = 1000
+	mspb = 1500
 	whole = mspb * 4
 	half = mspb * 2
 	quarter = mspb
@@ -31,7 +31,10 @@ class PPlayer:
 					rest = True
 					time = round(self.getTime(note[1]))
 				else:
-					noteLetter = self.getNote(note[0])
+					try:
+						noteLetter = NotesDict[note[0]]
+					except:
+						raise SyntaxError("Could not read letter of note")
 					try:
 						octive = int(note[1])
 					except:
@@ -42,31 +45,6 @@ class PPlayer:
 				else:
 					sleep(time/1000)
 
-
-	def getNote(self, ch):
-		if ch == 'C':
-			return C
-		elif ch == 'd':
-			return d
-		elif ch == 'D':
-			return D
-		elif ch == 'e':
-			return e
-		elif ch == 'E':
-			return E
-		elif ch == 'F':
-			return F
-		elif ch == 'G':
-			return G
-		elif ch == 'a':
-			return a
-		elif ch == 'A':
-			return A
-		elif ch == 'b':
-			return b
-		elif ch == 'B':
-			return B
-		raise SyntaxError("Could not read letter of note")
 
 	def getTime(self, ch):
 		if ch == 'w':
