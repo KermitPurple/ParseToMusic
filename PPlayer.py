@@ -11,12 +11,12 @@ class PPlayer:
 	eighth = mspb / 2
 	sixteenth = mspb / 4
 	TimesDict = {
-			"w": whole,
-			"h": half,
-			"q": quarter,
-			"e": eighth,
-			"s": sixteenth,
-			}
+		"w": whole,
+		"h": half,
+		"q": quarter,
+		"e": eighth,
+		"s": sixteenth,
+		}
 
 	def __init__(self, FileToParse):
 		self.file = FileToParse
